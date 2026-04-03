@@ -12,7 +12,7 @@
     <label>Status</label><br>
     <select name="status">
         <option value="open">Open</option>
-        <option value="in_progress">In Progress</option>
+        <option value="in progress">In Progress</option>
         <option value="done">Done</option>
     </select><br><br>
 
