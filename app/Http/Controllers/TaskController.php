@@ -22,7 +22,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('tasks.create');
     }
 
     /**
@@ -30,7 +30,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \App\Models\Task::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'status' => $request->status,
+            'priority' => $request->priority
+        ]);
+
+        return redirect('/tasks');
     }
 
     /**
