@@ -1,30 +1,58 @@
-<h1>Edit Task</h1>
+@extends('layouts.app')
 
-<form method="POST" action="/tasks/{{ $task->id }}">
+@section('content')
+
+<h2 class="mb-4">Edit Task</h2>
+
+<form action="/tasks/{{ $task->id }}" method="POST">
+
     @csrf
     @method('PUT')
 
-    <label>Title</label><br>
-    <input type="text" name="title" value="{{ $task->title }}"><br><br>
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" value="{{ $task->title }}">
+    </div>
 
-    <label>Description</label><br>
-    <textarea name="description">{{ $task->description }}</textarea><br><br>
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea name="description" class="form-control">{{ $task->description }}</textarea>
+    </div>
 
-    <select name="status" class="form-control">
+    <div class="mb-3">
+        <label class="form-label">Status</label>
 
-        <option value="Open" {{ $task->status == 'Open' ? 'selected' : '' }}>Open</option>
-        <option value="In Progress" {{ $task->status == 'In Progress' ? 'selected' : '' }}>In Progress</option>
-        <option value="Done" {{ $task->status == 'Done' ? 'selected' : '' }}>Done</option>
+        <select name="status" class="form-control">
 
-    </select><br><br>
+            <option value="Open" {{ $task->status == 'Open' ? 'selected' : '' }}>Open</option>
 
-    <select name="priority" class="form-control">
+            <option value="In Progress" {{ $task->status == 'In Progress' ? 'selected' : '' }}>In Progress</option>
 
-        <option value="Low" {{ $task->priority == 'Low' ? 'selected' : '' }}>Low</option>
-        <option value="Medium" {{ $task->priority == 'Medium' ? 'selected' : '' }}>Medium</option>
-        <option value="High" {{ $task->priority == 'High' ? 'selected' : '' }}>High</option>
+            <option value="Done" {{ $task->status == 'Done' ? 'selected' : '' }}>Done</option>
 
-    </select><br><br>
+        </select>
 
-    <button type="submit">Update Task</button>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Priority</label>
+
+        <select name="priority" class="form-control">
+
+            <option value="Low" {{ $task->priority == 'Low' ? 'selected' : '' }}>Low</option>
+
+            <option value="Medium" {{ $task->priority == 'Medium' ? 'selected' : '' }}>Medium</option>
+
+            <option value="High" {{ $task->priority == 'High' ? 'selected' : '' }}>High</option>
+
+        </select>
+
+    </div>
+
+    <button type="submit" class="btn btn-success">Update Task</button>
+
+    <a href="/tasks" class="btn btn-secondary">Back</a>
+
 </form>
+
+@endsection
