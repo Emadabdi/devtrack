@@ -10,17 +10,23 @@
     <textarea name="description"></textarea><br><br>
 
     <label>Status</label><br>
-    <select name="status">
-        <option value="open">Open</option>
-        <option value="in progress">In Progress</option>
-        <option value="done">Done</option>
+
+    <select name="status" class="form-control">
+
+        <option value="Open">Open</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Done">Done</option>
+
     </select><br><br>
 
     <label>Priority</label><br>
-    <select name="priority">
-        <option value="low">Low</option>
-        <option value="normal">Normal</option>
-        <option value="high">High</option>
+
+    <select name="priority" class="form-control">
+
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+
     </select><br><br>
 
     <button type="submit">Save Task</button>

@@ -10,11 +10,21 @@
     <label>Description</label><br>
     <textarea name="description">{{ $task->description }}</textarea><br><br>
 
-    <label>Status</label><br>
-    <input type="text" name="status" value="{{ $task->status }}"><br><br>
+    <select name="status" class="form-control">
 
-    <label>Priority</label><br>
-    <input type="text" name="priority" value="{{ $task->priority }}"><br><br>
+        <option value="Open" {{ $task->status == 'Open' ? 'selected' : '' }}>Open</option>
+        <option value="In Progress" {{ $task->status == 'In Progress' ? 'selected' : '' }}>In Progress</option>
+        <option value="Done" {{ $task->status == 'Done' ? 'selected' : '' }}>Done</option>
+
+    </select><br><br>
+
+    <select name="priority" class="form-control">
+
+        <option value="Low" {{ $task->priority == 'Low' ? 'selected' : '' }}>Low</option>
+        <option value="Medium" {{ $task->priority == 'Medium' ? 'selected' : '' }}>Medium</option>
+        <option value="High" {{ $task->priority == 'High' ? 'selected' : '' }}>High</option>
+
+    </select><br><br>
 
     <button type="submit">Update Task</button>
 </form>
