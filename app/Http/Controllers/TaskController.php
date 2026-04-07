@@ -51,17 +51,28 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Task $task)
+    public function edit($id)
     {
-        //
+        $task = \App\Models\Task::find($id);
+
+        return view('tasks.edit', compact('task'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id)
     {
-        //
+        $task = \App\Models\Task::find($id);
+
+        $task->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'status' => $request->status,
+            'priority' => $request->priority
+        ]);
+
+        return redirect('/tasks');
     }
 
     /**

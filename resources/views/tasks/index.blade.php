@@ -32,12 +32,16 @@
         <td>{{ $task->priority }}</td>
 
         <td>
-            <form action="/tasks/{{ $task->id }}" method="POST">
+
+            <a href="/tasks/{{ $task->id }}/edit">Edit</a>
+
+            <form action="/tasks/{{ $task->id }}" method="POST" style="display:inline;">
                 @csrf
                 @method('DELETE')
 
                 <button type="submit">Delete</button>
             </form>
+
         </td>
 
     </tr>
