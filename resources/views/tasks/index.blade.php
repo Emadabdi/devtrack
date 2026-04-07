@@ -25,8 +25,36 @@
         <tr>
             <td>{{ $task->title }}</td>
             <td>{{ $task->description }}</td>
-            <td>{{ $task->status }}</td>
-            <td>{{ $task->priority }}</td>
+            <td>
+
+                @if($task->status == 'Open')
+                <span class="badge bg-danger">Open</span>
+                @endif
+
+                @if($task->status == 'In Progress')
+                <span class="badge bg-warning text-dark">In Progress</span>
+                @endif
+
+                @if($task->status == 'Done')
+                <span class="badge bg-success">Done</span>
+                @endif
+
+            </td>
+            <td>
+
+                @if($task->priority == 'Low')
+                <span class="badge bg-secondary">Low</span>
+                @endif
+
+                @if($task->priority == 'Medium')
+                <span class="badge bg-info text-dark">Medium</span>
+                @endif
+
+                @if($task->priority == 'High')
+                <span class="badge bg-danger">High</span>
+                @endif
+
+            </td>
 
             <td>
 
