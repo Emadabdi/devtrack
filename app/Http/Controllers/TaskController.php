@@ -11,10 +11,16 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = \App\Models\Task::all();
-        return view('tasks.index', compact('tasks'));
+        $search = $request->search;
+
+        $tasks = \App\Models\Task::when($search, function ($query, $search) {
+            return $query->where('title', 'like', "%$search%")
+                ->orWhere('description', 'like', "%$search%");
+        })->get();
+
+        return view('tasks.index', compact('tasks', 'search'));
     }
 
     /**
@@ -83,5 +89,14 @@ class TaskController extends Controller
         \App\Models\Task::find($id)->delete();
 
         return redirect('/tasks');
+    }
+
+    public function kanban()
+    {
+        $openTasks = \App\Models\Task::where('status', 'open')->get();
+        $progressTasks = \App\Models\Task::where('status', 'in progress')->get();
+        $doneTasks = \App\Models\Task::where('status', 'done')->get();
+
+        return view('tasks.kanban', compact('openTasks', 'progressTasks', 'doneTasks'));
     }
 }

@@ -7,5 +7,6 @@ Route::get('/', function () {
     return redirect('/tasks');
 });
 
+Route::get('/kanban', [App\Http\Controllers\TaskController::class, 'kanban']);
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
 Route::resource('tasks', TaskController::class);

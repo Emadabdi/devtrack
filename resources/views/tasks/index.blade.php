@@ -6,6 +6,23 @@
 
 <a href="/tasks/create" class="btn btn-primary mb-3">Create Task</a>
 
+<form method="GET" action="/tasks" class="mb-3">
+    <div class="input-group">
+
+        <input
+            type="text"
+            name="search"
+            class="form-control"
+            placeholder="Search tasks..."
+            value="{{ $search ?? '' }}">
+
+        <button class="btn btn-primary">
+            Search
+        </button>
+
+    </div>
+</form>
+
 <table class="table table-bordered">
 
     <thead>

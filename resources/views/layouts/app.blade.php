@@ -19,6 +19,7 @@
             <div class="navbar-nav">
                 <a class="nav-link" href="/dashboard">Dashboard</a>
                 <a class="nav-link" href="/tasks">Tasks</a>
+                <a class="nav-link" href="/kanban">Kanban</a>
             </div>
 
         </div>
