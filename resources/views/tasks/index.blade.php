@@ -1,50 +1,52 @@
-<h1>DevTrack Tasks</h1>
+@extends('layouts.app')
 
-<a href="/tasks/create">Create New Task</a>
+@section('content')
 
-<ul>
-    @foreach($tasks as $task)
-    <li>
-        <strong>{{ $task->title }}</strong>
-        - {{ $task->status }}
+<h1 class="mb-4">DevTrack - Task Manager</h1>
 
-        <a href="/tasks/{{ $task->id }}/edit">Edit</a>
-    </li>
-    @endforeach
-</ul>
+<a href="/tasks/create" class="btn btn-primary mb-3">Create Task</a>
 
-<h2>All Tasks</h2>
+<table class="table table-bordered">
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Status</th>
-        <th>Priority</th>
-        <th>Action</th>
-    </tr>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
 
-    @foreach($tasks as $task)
-    <tr>
-        <td>{{ $task->title }}</td>
-        <td>{{ $task->description }}</td>
-        <td>{{ $task->status }}</td>
-        <td>{{ $task->priority }}</td>
+    <tbody>
 
-        <td>
+        @foreach ($tasks as $task)
 
-            <a href="/tasks/{{ $task->id }}/edit">Edit</a>
+        <tr>
+            <td>{{ $task->title }}</td>
+            <td>{{ $task->description }}</td>
+            <td>{{ $task->status }}</td>
+            <td>{{ $task->priority }}</td>
 
-            <form action="/tasks/{{ $task->id }}" method="POST" style="display:inline;">
-                @csrf
-                @method('DELETE')
+            <td>
 
-                <button type="submit">Delete</button>
-            </form>
+                <a href="/tasks/{{ $task->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
 
-        </td>
+                <form action="/tasks/{{ $task->id }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
 
-    </tr>
-    @endforeach
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+
+            </td>
+
+        </tr>
+
+        @endforeach
+
+    </tbody>
 
 </table>
+
+@endsection
