@@ -21,6 +21,7 @@
         <th>Description</th>
         <th>Status</th>
         <th>Priority</th>
+        <th>Action</th>
     </tr>
 
     @foreach($tasks as $task)
@@ -29,6 +30,16 @@
         <td>{{ $task->description }}</td>
         <td>{{ $task->status }}</td>
         <td>{{ $task->priority }}</td>
+
+        <td>
+            <form action="/tasks/{{ $task->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+
     </tr>
     @endforeach
 
