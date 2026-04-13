@@ -20,6 +20,7 @@
                 <a class="nav-link" href="/dashboard">Dashboard</a>
                 <a class="nav-link" href="/tasks">Tasks</a>
                 <a class="nav-link" href="/kanban">Kanban</a>
+                <a class="nav-link" href="/testreport">Test Report</a>
             </div>
 
         </div>
